@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArteSamy - Amigurumis con Alma</title>
     <meta name="description" content="Amigurumis de diseño premium creados punto a punto con los mejores materiales hipoalergénicos en Perú. Hechos a mano con amor.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="image" href="img/amigurumi-doll-1.jpg" imagesizes="(max-width: 1024px) 50vw, 400px">
+    <link rel="preload" as="image" href="img/amigurumi-doll-1.jpg" media="(min-width: 768px)">
+    <link rel="preload" href="videos/amigurumi-craft.mp4" as="video" type="video/mp4">
     
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website">
@@ -23,10 +29,13 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="font" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" crossorigin>
+    <link rel="preload" as="style" href="style.css?v=1.4">
+    <link rel="preload" as="script" href="app.js?v=1.4">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1.3">
+    <link rel="stylesheet" href="style.css?v=1.4">
 </head>
 
 <body>
@@ -64,7 +73,8 @@
                 <div class="video-container enhanced-img">
                     <video autoplay muted loop playsinline preload="auto"
                         poster="img/amigurumi-doll-1.jpg"
-                        class="knitting-video">
+                        class="knitting-video"
+                        fetchpriority="high">
                         <source src="videos/amigurumi-craft.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -135,7 +145,7 @@
                     data-image="img/amigurumi-doll-1.jpg"
                     data-badge="Favorito">
                     <div class="product-image-wrap">
-                        <img src="img/amigurumi-doll-1.jpg" alt="Muñeca con Gorrito Búho" class="enhanced-img" loading="lazy">
+                        <img src="img/amigurumi-doll-1.jpg" alt="Muñeca con Gorrito Búho" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
                         <span class="product-badge">Favorito</span>
                         <button class="quick-view">Detalles</button>
                     </div>
@@ -149,7 +159,7 @@
                     data-description="Una tierna muñeca con un hermoso vestido rojo tejido a crochet. Cada detalle de su cabello y rostro ha sido bordado cuidadosamente con materiales 100% hipoalergénicos."
                     data-image="img/amigurumi-doll-2.jpg">
                     <div class="product-image-wrap">
-                        <img src="img/amigurumi-doll-2.jpg" alt="Muñeca Vestido Rojo" class="enhanced-img" loading="lazy">
+                        <img src="img/amigurumi-doll-2.jpg" alt="Muñeca Vestido Rojo" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
                         <button class="quick-view">Detalles</button>
                     </div>
                     <div class="product-info">
@@ -163,7 +173,7 @@
                     data-image="img/amigurumi-doll-3.jpg"
                     data-badge="Nuevo">
                     <div class="product-image-wrap">
-                        <img src="img/amigurumi-doll-3.jpg" alt="Muñeca Vestido Amarillo" class="enhanced-img" loading="lazy">
+                        <img src="img/amigurumi-doll-3.jpg" alt="Muñeca Vestido Amarillo" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
                         <span class="product-badge">Nuevo</span>
                         <button class="quick-view">Detalles</button>
                     </div>
@@ -177,7 +187,7 @@
                     data-description="La pareja perfecta para regalar. Dos muñecas coordinadas con vestidos tejidos y detalles únicos. Un hermoso regalo que simboliza la amistad y hermandad."
                     data-image="img/amigurumi-doll-4.jpg">
                     <div class="product-image-wrap">
-                        <img src="img/amigurumi-doll-4.jpg" alt="Pareja de Muñequitas" class="enhanced-img" loading="lazy">
+                        <img src="img/amigurumi-doll-4.jpg" alt="Pareja de Muñequitas" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
                         <button class="quick-view">Detalles</button>
                     </div>
                     <div class="product-info">
@@ -190,7 +200,7 @@
                     data-description="Dos compañeras inseparables con vestuarios en contraste. Diseñadas para resistir el juego diario y lavados delicados, manteniendo su forma y suavidad."
                     data-image="img/amigurumi-doll-5.jpg">
                     <div class="product-image-wrap">
-                        <img src="img/amigurumi-doll-5.jpg" alt="Amigas Tejidas" class="enhanced-img" loading="lazy">
+                        <img src="img/amigurumi-doll-5.jpg" alt="Amigas Tejidas" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
                         <button class="quick-view">Detalles</button>
                     </div>
                     <div class="product-info">
@@ -203,7 +213,7 @@
                     data-description="Tres encantadoras muñecas de colección. Cada una con su propio estilo y peinado personalizado. Tejidas con pasión y los mejores hilos seleccionados."
                     data-image="img/amigurumi-doll-6.jpg">
                     <div class="product-image-wrap">
-                        <img src="img/amigurumi-doll-6.jpg" alt="Trío de Muñecas" class="enhanced-img" loading="lazy">
+                        <img src="img/amigurumi-doll-6.jpg" alt="Trío de Muñecas" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
                         <button class="quick-view">Detalles</button>
                     </div>
                     <div class="product-info">
@@ -217,7 +227,7 @@
                     data-image="img/amigurumi-doll-7.jpg"
                     data-badge="Favorito">
                     <div class="product-image-wrap">
-                        <img src="img/amigurumi-doll-7.jpg" alt="Conejito de Felpa" class="enhanced-img" loading="lazy">
+                        <img src="img/amigurumi-doll-7.jpg" alt="Conejito de Felpa" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
                         <span class="product-badge">Favorito</span>
                         <button class="quick-view">Detalles</button>
                     </div>
@@ -229,9 +239,9 @@
                 <article class="product-card reveal"
                     data-title="Llavero Floral"
                     data-description="El detalle perfecto para tus llaves o mochila. Mini muñequita con tocado de flor, tejida con precisión y argolla de metal segura y resistente."
-                    data-image="img/amigurumi-doll-8.jpg">
+                    data-image="img/amigurumi-doll-8.jpeg">
                     <div class="product-image-wrap">
-                        <img src="img/amigurumi-doll-8.jpg" alt="Llavero de Flor" class="enhanced-img" loading="lazy">
+                        <img src="img/amigurumi-doll-8.jpeg" alt="Llavero de Flor" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
                         <button class="quick-view">Detalles</button>
                     </div>
                     <div class="product-info">
@@ -242,9 +252,9 @@
                 <article class="product-card reveal"
                     data-title="Muñeca Violeta"
                     data-description="Una encantadora muñeca con detalles en tonos violeta y lavanda. Sus largas trenzas y su vestido de volantes la convierten en una pieza de colección única."
-                    data-image="img/amigurumi-doll-9.jpg">
+                    data-image="img/amigurumi-doll-9.jpeg">
                     <div class="product-image-wrap">
-                        <img src="img/amigurumi-doll-9.jpg" alt="Muñeca con Trenzas" class="enhanced-img" loading="lazy">
+                        <img src="img/amigurumi-doll-9.jpeg" alt="Muñeca con Trenzas" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
                         <button class="quick-view">Detalles</button>
                     </div>
                     <div class="product-info">
@@ -255,9 +265,9 @@
                 <article class="product-card reveal"
                     data-title="Osito Miel"
                     data-description="Un adorable osito de miel con panal bordado y cuerpo suave. Perfecto para regalar o decorar, tejido con materiales hipoalergénicos de primera calidad."
-                    data-image="img/amigurumi-doll-10.jpg.jpeg">
+                    data-image="img/amigurumi-doll-10.jpeg">
                     <div class="product-image-wrap">
-                        <img src="img/amigurumi-doll-10.jpg.jpeg" alt="Osito Miel" class="enhanced-img" loading="lazy">
+                        <img src="img/amigurumi-doll-10.jpeg" alt="Osito Miel" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
                         <button class="quick-view">Detalles</button>
                     </div>
                     <div class="product-info">
@@ -268,9 +278,9 @@
                 <article class="product-card reveal"
                     data-title="Gato Atigrado"
                     data-description="Un felino tejido a crochet con detalles en tonos naranja y blanco. Orejas puntiagudas, bigotes bordados y cola enrollada. Ideal para amantes de los gatos."
-                    data-image="img/amigurumi-doll-11.jpg.jpeg">
+                    data-image="img/amigurumi-doll-11.jpeg">
                     <div class="product-image-wrap">
-                        <img src="img/amigurumi-doll-11.jpg.jpeg" alt="Gato Atigrado" class="enhanced-img" loading="lazy">
+                        <img src="img/amigurumi-doll-11.jpeg" alt="Gato Atigrado" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
                         <button class="quick-view">Detalles</button>
                     </div>
                     <div class="product-info">
@@ -281,9 +291,9 @@
                 <article class="product-card reveal"
                     data-title="Perro Salchicha"
                     data-description="Un amigo perruno de patas cortas y cuerpo alargado. Tejido con hilado suave y duradero, con detalles en crochet que resaltan su personalidad juguetona."
-                    data-image="img/amigurumi-doll-12.jpg.jpeg">
+                    data-image="img/amigurumi-doll-12.jpeg">
                     <div class="product-image-wrap">
-                        <img src="img/amigurumi-doll-12.jpg.jpeg" alt="Perro Salchicha" class="enhanced-img" loading="lazy">
+                        <img src="img/amigurumi-doll-12.jpeg" alt="Perro Salchicha" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
                         <button class="quick-view">Detalles</button>
                     </div>
                     <div class="product-info">
@@ -294,9 +304,9 @@
                 <article class="product-card reveal"
                     data-title="Unicornio Brillo"
                     data-description="Magia tejida en cada punto. Unicornio con crin arcoíris, cuerno dorado y detalles brillantes. Relleno siliconado para una textura especial."
-                    data-image="img/amigurumi-doll-13.jpg.jpeg">
+                    data-image="img/amigurumi-doll-13.jpeg">
                     <div class="product-image-wrap">
-                        <img src="img/amigurumi-doll-13.jpg.jpeg" alt="Unicornio Brillo" class="enhanced-img" loading="lazy">
+                        <img src="img/amigurumi-doll-13.jpeg" alt="Unicornio Brillo" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
                         <button class="quick-view">Detalles</button>
                     </div>
                     <div class="product-info">
@@ -307,9 +317,9 @@
                 <article class="product-card reveal"
                     data-title="Pollito Pío"
                     data-description="Un simpático pollito amarillo con pico naranja y patitas redondeadas. Suave, adorable y perfecto para los más pequeños de la casa."
-                    data-image="img/amigurumi-doll-14.jpg.jpeg">
+                    data-image="img/amigurumi-doll-14.jpeg">
                     <div class="product-image-wrap">
-                        <img src="img/amigurumi-doll-14.jpg.jpeg" alt="Pollito Pío" class="enhanced-img" loading="lazy">
+                        <img src="img/amigurumi-doll-14.jpeg" alt="Pollito Pío" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
                         <button class="quick-view">Detalles</button>
                     </div>
                     <div class="product-info">
@@ -320,9 +330,9 @@
                 <article class="product-card reveal"
                     data-title="Dinosaurio Verde"
                     data-description="Un temible pero adorable T-Rex tejido a mano. Detalles en tonos verdes con vientre claro, pinchos suaves y cola robusta."
-                    data-image="img/amigurumi-doll-15.jpg.jpeg">
+                    data-image="img/amigurumi-doll-15.jpeg">
                     <div class="product-image-wrap">
-                        <img src="img/amigurumi-doll-15.jpg.jpeg" alt="Dinosaurio Verde" class="enhanced-img" loading="lazy">
+                        <img src="img/amigurumi-doll-15.jpeg" alt="Dinosaurio Verde" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
                         <button class="quick-view">Detalles</button>
                     </div>
                     <div class="product-info">
@@ -333,9 +343,9 @@
                 <article class="product-card reveal"
                     data-title="Oso Pandita"
                     data-description="Un tierno oso panda con pelaje en contraste blanco y negro. Cejas bordadas, cuerpo achuchable y detalles en crochet que enamoran a primera vista."
-                    data-image="img/amigurumi-doll-16.jpg.jpeg">
+                    data-image="img/amigurumi-doll-16.png">
                     <div class="product-image-wrap">
-                        <img src="img/amigurumi-doll-16.jpg.jpeg" alt="Oso Pandita" class="enhanced-img" loading="lazy">
+                        <img src="img/amigurumi-doll-16.png" alt="Oso Pandita" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
                         <button class="quick-view">Detalles</button>
                     </div>
                     <div class="product-info">
@@ -346,13 +356,26 @@
                 <article class="product-card reveal"
                     data-title="Conejo Bombón"
                     data-description="Un conejo con orejas largas y un lazo rojo de amor. Tejido con los mejores hilos para un acabado suave y resistente. Ideal para regalar."
-                    data-image="img/amigurumi-doll-17.jpg.jpeg">
+                    data-image="img/amigurumi-doll-17.jpeg">
                     <div class="product-image-wrap">
-                        <img src="img/amigurumi-doll-17.jpg.jpeg" alt="Conejo Bombón" class="enhanced-img" loading="lazy">
+                        <img src="img/amigurumi-doll-17.jpeg" alt="Conejo Bombón" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
                         <button class="quick-view">Detalles</button>
                     </div>
                     <div class="product-info">
                         <h3>Conejo Bombón</h3>
+                    </div>
+                </article>
+                <!-- Product Card 18 -->
+                <article class="product-card reveal"
+                    data-title="Elefantito Azul"
+                    data-description="Un adorable elefante en tonos azules con detalles bordados. Orejas grandes y trompa suave tejida a crochet. Un regalo perfecto para los amantes de la selva."
+                    data-image="img/amigurumi-doll-18.jpeg">
+                    <div class="product-image-wrap">
+                        <img src="img/amigurumi-doll-18.jpeg" alt="Elefantito Azul" class="enhanced-img" decoding="async" loading="lazy" width="450" height="450">
+                        <button class="quick-view">Detalles</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Elefantito Azul</h3>
                     </div>
                 </article>
             </div>
@@ -404,7 +427,7 @@
             <button class="modal-close" id="modal-close" aria-label="Cerrar modal">&times;</button>
             <div class="modal-body">
                 <div class="modal-image-container">
-                    <img id="modal-img" src="" alt="" class="enhanced-img">
+                    <img id="modal-img" src="" alt="" class="enhanced-img" width="450" height="450">
                 </div>
                 <div class="modal-info-container">
                     <span class="product-badge" id="modal-badge"></span>
@@ -420,7 +443,7 @@
         </div>
     </div>
 
-    <script src="app.js?v=1.3"></script>
+    <script src="app.js?v=1.4"></script>
 </body>
 
 </html>

@@ -17,18 +17,43 @@ document.querySelectorAll('.reveal').forEach(el => {
     revealObserver.observe(el);
 });
 
-// Subtle parallax effect on hero image/video
+// Decode images when approaching viewport for smoother rendering
+const decodeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.decoding !== 'async') {
+                img.decode().then(() => img.classList.add('decoded')).catch(() => {});
+            }
+            decodeObserver.unobserve(img);
+        }
+    });
+}, { rootMargin: '200px' });
+
+document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+    decodeObserver.observe(img);
+});
+
+// Subtle parallax effect on hero image/video with rAF throttling
+const parallaxMedia = document.querySelector('.video-container');
+let ticking = false;
+
 window.addEventListener('scroll', () => {
-    const heroMedia = document.querySelector('.video-container');
-    if (heroMedia) {
-        const scrolled = window.pageYOffset;
-        heroMedia.style.transform = `translateY(${scrolled * 0.05}px)`;
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            const scrolled = window.pageYOffset;
+            if (parallaxMedia) {
+                parallaxMedia.style.transform = `translateY(${scrolled * 0.05}px)`;
+            }
+            ticking = false;
+        });
+        ticking = true;
     }
 });
 
 // Mobile Navigation & Modal Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Mobile Menu Logic
+    // Mobile Menu Logic
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
     
@@ -38,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('active');
         });
 
-        // Close menu when a link is clicked
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('active');
@@ -47,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Product Details Modal Logic
+    // Product Details Modal Logic
     const modal = document.getElementById('product-modal');
     const modalClose = document.getElementById('modal-close');
     const modalBackdrop = document.getElementById('modal-backdrop');
@@ -58,12 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalDescription = document.getElementById('modal-description');
     const modalWhatsappBtn = document.getElementById('modal-whatsapp-btn');
 
-    // Force video playback (bypassing some aggressive browser policies)
     const video = document.querySelector('.knitting-video');
     if (video) {
         video.play().catch(error => {
-            console.log("Autoplay was prevented, waiting for interaction", error);
-            // Fallback: try playing on first click/scroll
             const playOnInteraction = () => {
                 video.play();
                 document.removeEventListener('mousedown', playOnInteraction);
@@ -92,21 +113,19 @@ document.addEventListener('DOMContentLoaded', () => {
             modalBadge.style.display = 'none';
         }
 
-        // Custom dynamic WhatsApp message for this product
         const phoneNumber = '51945921342';
         const messageText = `Hola ArteSamy, me gustaría pedir información sobre el amigurumi "${title}"`;
         modalWhatsappBtn.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(messageText)}`;
 
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Lock scroll
+        document.body.style.overflow = 'hidden';
     };
 
     const closeModal = () => {
         modal.classList.remove('active');
-        document.body.style.overflow = ''; // Unlock scroll
+        document.body.style.overflow = '';
     };
 
-    // Attach listeners to "Detalles" buttons on each product card
     document.querySelectorAll('.product-card').forEach(card => {
         const quickViewBtn = card.querySelector('.quick-view');
         if (quickViewBtn) {
@@ -120,10 +139,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalClose) modalClose.addEventListener('click', closeModal);
     if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
 
-    // Close modal on Escape key press
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
             closeModal();
+        }
+    });
+
+    // Preload likely-next images (sequential logic)
+    const productImages = Array.from(document.querySelectorAll('.product-card img')).map(img => img.src);
+    const preloadThreshold = 3;
+    productImages.slice(0, preloadThreshold).forEach(src => {
+        if (src && !document.querySelector(`link[href="${src}"]`)) {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'image';
+            link.href = src;
+            link.imagesizes = '(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw';
+            document.head.appendChild(link);
         }
     });
 });
