@@ -331,12 +331,7 @@ h1, h2, h3 {
     max-width: 95%;
     max-height: 95%;
     object-fit: contain;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease-in;
-    opacity: 0;
-}
-
-.product-image-wrap img.decoded {
-    opacity: 1;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .product-badge {

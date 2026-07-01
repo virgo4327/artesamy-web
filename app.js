@@ -17,23 +17,6 @@ document.querySelectorAll('.reveal').forEach(el => {
     revealObserver.observe(el);
 });
 
-// Decode images when approaching viewport for smoother rendering
-const decodeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const img = entry.target;
-            if (img.decoding !== 'async') {
-                img.decode().then(() => img.classList.add('decoded')).catch(() => {});
-            }
-            decodeObserver.unobserve(img);
-        }
-    });
-}, { rootMargin: '200px' });
-
-document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-    decodeObserver.observe(img);
-});
-
 // Subtle parallax effect on hero image/video with rAF throttling
 const parallaxMedia = document.querySelector('.video-container');
 let ticking = false;
