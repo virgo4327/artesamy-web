@@ -30,7 +30,10 @@ function initCatalogImages() {
             img.style.opacity = '0';
             img.style.transition = 'opacity 0.4s ease';
             img.addEventListener('load', showWhenLoaded, { once: true });
-            img.addEventListener('error', showWhenLoaded, { once: true });
+            img.addEventListener('error', () => {
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.4s ease';
+            }, { once: true });
         }
     });
 }
