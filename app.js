@@ -78,15 +78,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const video = document.querySelector('.knitting-video');
     if (video) {
-        video.play().catch(error => {
-            const playOnInteraction = () => {
-                video.play();
-                document.removeEventListener('mousedown', playOnInteraction);
-                document.removeEventListener('scroll', playOnInteraction);
-            };
-            document.addEventListener('mousedown', playOnInteraction);
-            document.addEventListener('scroll', playOnInteraction);
-        });
+        console.log('Video element found:', video);
+        console.log('Video source:', video.querySelector('source')?.src);
+        console.log('Video readyState:', video.readyState);
+        
+        const attemptPlay = () => {
+            console.log('Attempting to play video...');
+            video.play().then(() => {
+                console.log('Video autoplay succeeded');
+            }).catch(error => {
+                console.warn('Video autoplay failed:', error);
+                const playOnInteraction = () => {
+                    video.play().then(() => {
+                        console.log('Video play on interaction succeeded');
+                    }).catch(interactionError => {
+                        console.warn('Video play on interaction failed:', interactionError);
+                    });
+                    document.removeEventListener('mousedown', playOnInteraction);
+                    document.removeEventListener('scroll', playOnInteraction);
+                };
+                document.addEventListener('mousedown', playOnInteraction);
+                document.addEventListener('scroll', playOnInteraction);
+            });
+        };
+
+        if (video.readyState >= 2) {
+            console.log('Video ready, attempting play');
+            attemptPlay();
+        } else {
+            console.log('Video not ready, waiting for loadeddata');
+            video.addEventListener('loadeddata', attemptPlay, { once: true });
+            video.addEventListener('canplay', attemptPlay, { once: true });
+        }
+    } else {
+        console.warn('Video element not found');
     }
 });
 
