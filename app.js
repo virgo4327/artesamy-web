@@ -146,4 +146,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-console.log('Amigurumi Site Engine Initialized');
+// ArteSamy Site Engine
