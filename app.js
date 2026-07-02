@@ -77,22 +77,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const video = document.querySelector('.knitting-video');
+    const fallbackBtn = document.querySelector('.video-fallback-btn');
+    
     if (video) {
         console.log('Video element found:', video);
         console.log('Video source:', video.querySelector('source')?.src);
         console.log('Video readyState:', video.readyState);
         
+        const hideFallback = () => {
+            if (fallbackBtn) {
+                fallbackBtn.classList.remove('visible');
+            }
+        };
+        
+        const showFallback = () => {
+            if (fallbackBtn) {
+                fallbackBtn.classList.add('visible');
+            }
+        };
+        
+        if (fallbackBtn) {
+            fallbackBtn.addEventListener('click', () => {
+                video.play().then(() => {
+                    hideFallback();
+                }).catch(error => {
+                    console.warn('Video play on button click failed:', error);
+                });
+            });
+        }
+        
         const attemptPlay = () => {
             console.log('Attempting to play video...');
             video.play().then(() => {
                 console.log('Video autoplay succeeded');
+                hideFallback();
             }).catch(error => {
                 console.warn('Video autoplay failed:', error);
+                showFallback();
                 const playOnInteraction = () => {
                     video.play().then(() => {
                         console.log('Video play on interaction succeeded');
+                        hideFallback();
                     }).catch(interactionError => {
                         console.warn('Video play on interaction failed:', interactionError);
+                        showFallback();
                     });
                     document.removeEventListener('mousedown', playOnInteraction);
                     document.removeEventListener('scroll', playOnInteraction);
