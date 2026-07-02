@@ -1,7 +1,7 @@
 // Scroll Reveal Implementation
 const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.1,
+    rootMargin: '0px 0px -20px 0px'
 };
 
 const revealObserver = new IntersectionObserver((entries) => {
@@ -13,8 +13,31 @@ const revealObserver = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-document.querySelectorAll('.reveal').forEach(el => {
-    revealObserver.observe(el);
+function initReveal() {
+    document.querySelectorAll('.reveal').forEach(el => {
+        revealObserver.observe(el);
+    });
+}
+
+function initCatalogImages() {
+    document.querySelectorAll('.product-card .enhanced-img').forEach(img => {
+        const showWhenLoaded = () => {
+            img.style.opacity = '1';
+        };
+        if (img.complete && img.naturalWidth > 0) {
+            showWhenLoaded();
+        } else {
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.4s ease';
+            img.addEventListener('load', showWhenLoaded, { once: true });
+            img.addEventListener('error', showWhenLoaded, { once: true });
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initReveal();
+    initCatalogImages();
 });
 
 // Subtle parallax effect on hero image/video with rAF throttling

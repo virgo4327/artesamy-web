@@ -312,8 +312,6 @@ h1, h2, h3 {
     border-radius: 25px;
     overflow: hidden;
     transition: var(--transition-smooth);
-    content-visibility: auto;
-    contain-intrinsic-size: auto 500px;
 }
 
 .product-image-wrap {
@@ -399,12 +397,12 @@ h1, h2, h3 {
 .reveal {
     opacity: 0;
     transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.visible {
     opacity: 1;
     transform: translateY(0);
-    transition: var(--transition-smooth);
 }
 
 /* Footer */
